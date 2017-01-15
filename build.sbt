@@ -22,17 +22,11 @@ val commonSettings = Seq(
   organization := "com.spingo",
   version := appProperties.getProperty("version"),
   scalaVersion := "2.11.8",
-  crossScalaVersions := Seq("2.11.8"),
-  resolvers ++= Seq(
-    "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
-    "SpinGo OSS" at "http://spingo-oss.s3.amazonaws.com/repositories/releases",
-    "Sonatype Releases"  at "http://oss.sonatype.org/content/repositories/releases",
-    "The New Motion Public Repo" at "http://nexus.thenewmotion.com/content/groups/public/"
-  ),
+  crossScalaVersions := Seq("2.11.8", "2.12.1"),
   libraryDependencies ++= Seq(
     "com.chuusai" %%  "shapeless" % "2.3.1",
     "com.typesafe" % "config" % "1.3.0",
-    "com.thenewmotion.akka" %% "akka-rabbitmq" % "2.3",
+    "com.newmotion" %% "akka-rabbitmq" % "4.0.0",
     "org.slf4j" % "slf4j-api" % "1.7.21",
     "ch.qos.logback" % "logback-classic" % "1.1.7" % "test",
     "org.scalatest" %% "scalatest" % "2.2.6" % "test",
@@ -136,7 +130,7 @@ lazy val `akka-stream` = (project in file("./addons/akka-stream")).
   settings(
     name := "op-rabbit-akka-stream",
     libraryDependencies ++= Seq(
-      "com.timcharper"    %% "acked-streams" % "2.1.0",
+      "com.timcharper"    %% "acked-streams" % "2.1.1",
       "com.typesafe.akka" %% "akka-stream" % akkaVersion),
     unmanagedResourceDirectories in Test ++= Seq(
       (file(".").getAbsoluteFile) / "core" / "src" / "test" / "resources"),
